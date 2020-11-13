@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "blue-ecommerce"
+    }
+  },
+  "defaultProject": "blue-ecommerce",
+  "cli": {
+    "analytics": false
+  }
 }
