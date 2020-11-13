@@ -1,0 +1,154 @@
+<div class="profileSec">
+  <section class="p-3 container">
+    <h2 class="p-head mt-4">PROFILE</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="">
+      <div class="row">
+        <div
+          class="col-lg-8 col-md-12 mt-4 bg-mine pt-3 border-white rounded-lg"
+        >
+          <div class="container-fluid">
+            <!------------------------ Name-------------------------->
+            <p>
+              <mat-form-field appearance="outline" class="w-75">
+                <mat-label>Name</mat-label>
+                <input
+                  formControlName="name"
+                  matInput
+                  placeholder="Enter Input Name"
+                />
+                <mat-icon *ngIf="!userForm.controls.name.errors" matSuffix
+                >sentiment_very_satisfied
+                </mat-icon
+                >
+                <mat-icon *ngIf="userForm.controls.name.errors" matSuffix
+                >sentiment_dissatisfied
+                </mat-icon
+                >
+                <mat-hint
+                  *ngIf="
+                    userForm.controls.name.errors?.required &&
+                    userForm.controls.name.touched
+                  "
+                  align="end"
+                >This Field Is Required
+                </mat-hint
+                >
+                <mat-hint
+                  *ngIf="userForm.controls.name.errors?.minlength"
+                  align="end"
+                >Min Length Is 3 Characters
+                </mat-hint>
+              </mat-form-field>
+            </p>
+            <!------------------------ Email-------------------------->
+
+            <p>
+              <mat-form-field appearance="outline" class="w-75">
+                <mat-label>Email</mat-label>
+                <input
+                  formControlName="email"
+                  matInput
+                  placeholder="Enter Input Email"
+                />
+                <mat-icon *ngIf="!userForm.controls.email.errors" matSuffix
+                >sentiment_very_satisfied
+                </mat-icon
+                >
+                <mat-icon *ngIf="userForm.controls.email.errors" matSuffix
+                >sentiment_dissatisfied
+                </mat-icon
+                >
+                <mat-hint
+                  *ngIf="
+                    userForm.controls.email.errors?.required &&
+                    userForm.controls.email.touched
+                  "
+                  align="end"
+                >This Field Is Required
+                </mat-hint
+                >
+                <mat-hint
+                  *ngIf="userForm.controls.email.errors?.pattern"
+                  align="end"
+                >The Email Format Is InValid
+                </mat-hint>
+              </mat-form-field>
+            </p>
+
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 border-white rounded-lg">
+          <div class="container bg-mine mt-4 pb-5 pt-3">
+            <h3>Profile picture</h3>
+            <!------------------------ Images-------------------------->
+            <div
+              class="row justify-content-center align-items-center text-center"
+            >
+              <div
+                class="mine d-flex justify-content-center align-items-center text-center"
+              >
+                <div class="w-75 h-75">
+                  <img [src]="data['photo']" class="img-fluid"/>
+                </div>
+              </div>
+              <div class="">
+                <div>
+                  <input
+                    #inputFile
+                    (change)="onFileChange($event)"
+                    formControlName="file"
+                    id="file"
+                    style="display: none;"
+                    type="file"
+                  />
+                </div>
+
+                <div class="pb-3 col-lg-12">
+                  <button
+                    (click)="inputFile.click()"
+                    class="btn-default btn-file border mt-5 rounded-pill browse-mine"
+                    mat-flat-button
+                    type="button"
+                  >
+                    Upload Profile Picture
+                  </button>
+                  <mat-hint
+                    *ngIf="
+                      userForm.controls.file.errors?.required &&
+                      userForm.controls.file.touched
+                    "
+                    align="end"
+                  >This Field Is Required
+                  </mat-hint
+                  >
+                </div>
+              </div>
+              <div class="py-3 col-lg-12">
+                <span
+                  [routerLink]="['/dashboard/account/changepass']"
+                  class="rounded-pill p-4 btn-profile1"
+                  id="confirmChangePass"
+                  routerLinkActive="router-link-active"
+                  style="cursor: pointer;"
+                >ChangePassword</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-card-actions>
+        <div class="py-3 d-flex justify-content-center align-content-center">
+          <button
+            [disabled]="userForm.invalid"
+            class="rounded-pill btn-mine"
+            mat-raised-button
+            type="submit"
+          >
+            Confirm
+          </button>
+        </div>
+      </mat-card-actions>
+    </form>
+  </section>
+</div>

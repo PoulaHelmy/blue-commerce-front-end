@@ -1,0 +1,118 @@
+<div class="container d-flex h-100">
+  <div class="row justify-content-center align-items-center">
+    <div class="left-content col-md-6 my-4">
+      <div class="left-content-img">
+        <img
+          alt="Login image"
+          class="img-fluid"
+          src="../../../../assets/imgs/auth-images/undraw_fingerprint_swrc.svg"
+        />
+      </div>
+    </div>
+    <div class="right-content col-md-6 my-4">
+      <div class="right-content-form">
+        <h3 class="text-center">Welcome</h3>
+        <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+          <p>
+            <mat-form-field>
+              <input
+                formControlName="inputName"
+                matInput
+                placeholder="Name"
+                type="text"
+              />
+              <mat-hint
+                *ngIf="getName.errors?.required && getName.touched"
+                align="end"
+              >This Field Is Required
+              </mat-hint
+              >
+              <mat-hint *ngIf="getName.errors?.minlength" align="end"
+              >Min Length Is 3 Characters
+              </mat-hint
+              >
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <input
+                formControlName="email"
+                matInput
+                placeholder="Email"
+                type="email"
+              />
+              <mat-hint
+                *ngIf="getEmail.errors?.required && getEmail.touched"
+                align="end"
+              >This Field Is Required
+              </mat-hint
+              >
+              <mat-hint *ngIf="getEmail.errors?.pattern" align="end"
+              >The Email Format Is InValid
+              </mat-hint
+              >
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <input
+                formControlName="password"
+                matInput
+                placeholder="Password"
+                type="password"
+              />
+              <mat-hint
+                *ngIf="getPassword.errors?.required && getPassword.touched"
+                align="end"
+              >This Field Is Required
+              </mat-hint
+              >
+              <mat-hint *ngIf="getPassword.errors?.minlength" align="end"
+              >Min Length Is 6 Characters
+              </mat-hint
+              >
+            </mat-form-field>
+          </p>
+
+
+          <div class="submit-btn text-center m-auto">
+            <button
+              [class.spinner]="loading"
+              [disabled]="
+                registerForm.untouched || registerForm.invalid || loading
+              "
+              class="login-btn"
+              color="primary"
+              mat-raised-button
+              type="submit"
+            >
+              SignUp
+            </button>
+          </div>
+        </form>
+        <div class="example-button-row">
+          <button
+            [routerLink]="['/auth/login']"
+            class="float-left"
+            color="primary"
+            mat-button
+            routerLinkActive="router-link-active"
+          >
+            Login
+          </button>
+          <button
+            [routerLink]="['/auth/forgetpassword']"
+            class="float-right"
+            color="warn"
+            mat-button
+            routerLinkActive="router-link-active"
+          >
+            Forget Password
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

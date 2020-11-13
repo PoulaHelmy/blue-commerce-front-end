@@ -1,0 +1,92 @@
+<div class="container d-flex h-100">
+  <div class="row justify-content-center align-items-center">
+    <div class="left-content col-md-6 my-4">
+      <div class="left-content-img">
+        <img
+          alt="Login image"
+          class="img-fluid"
+          src="../../../../assets/imgs/auth-images/undraw_secure_login_pdn4.svg"
+        />
+      </div>
+    </div>
+    <div class="right-content col-md-6 my-4">
+      <div class="right-content-form w-100">
+        <h3 class="text-center">Welcome</h3>
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginform">
+          <p>
+            <mat-form-field class=" w-100">
+              <input
+                formControlName="email"
+                matInput
+                placeholder="Email"
+                type="text"
+              />
+              <mat-hint
+                *ngIf="getEmail.errors?.required && getEmail.touched"
+                align="end"
+              >This Field Is Required
+              </mat-hint
+              >
+              <mat-hint *ngIf="getEmail.errors?.pattern" align="end"
+              >The Email Format Is InValid
+              </mat-hint
+              >
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field class=" w-100">
+              <input
+                formControlName="password"
+                matInput
+                placeholder="Password"
+                type="password"
+              />
+              <mat-hint
+                *ngIf="getPassword.errors?.required && getPassword.touched"
+                align="end"
+              >This Field Is Required
+              </mat-hint
+              >
+              <mat-hint *ngIf="getPassword.errors?.minlength" align="end"
+              >Min Length Is 6 Characters
+              </mat-hint
+              >
+            </mat-form-field>
+          </p>
+          <div class="submit-btn text-center m-auto">
+            <button
+              [class.spinner]="loading"
+              [disabled]="loginform.untouched || loginform.invalid || loading"
+              class="login-btn"
+              color="primary"
+              mat-raised-button
+              type="submit"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+
+        <button
+          [routerLink]="['/auth/signup']"
+          class="float-left"
+          color="primary"
+          mat-button
+          routerLinkActive="router-link-active"
+        >
+          Register
+        </button>
+        <button
+          [routerLink]="['/auth/forgetpassword']"
+          class="float-right"
+          color="warn"
+          mat-button
+          routerLinkActive="router-link-active"
+        >
+          Forget Password
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

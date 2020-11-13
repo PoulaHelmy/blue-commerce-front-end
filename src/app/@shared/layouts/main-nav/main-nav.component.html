@@ -1,0 +1,22 @@
+<p [class]="themeClass">
+  <mat-toolbar color="primary">
+    <span>Blue Commerce</span>
+    <span class="example-spacer"></span>
+    <button aria-label="Example icon-button with heart icon" class="example-icon favorite-icon" mat-icon-button>
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <button (click)="changeTheme('blue-commerce-theme')" mat-icon-button>
+      <mat-icon>invert_colors_off</mat-icon>
+    </button>
+    <button (click)="changeTheme('my-dark-theme')" mat-icon-button>
+      <mat-icon>invert_colors_off</mat-icon>
+    </button>
+    <!--------------------------For Account Setting And Loged-Out ------------------------ -->
+    <a [routerLink]="['/dashboard']" class="mx-2" color="warn" mat-raised-button>Home</a>
+    <a [routerLink]="['/dashboard/account']" class="mx-2" color="primary" mat-raised-button>Accent</a>
+    <button (click)="logout()" class="mx-2" color="accent" mat-raised-button>Logout</button>
+    <!--    <button color="warn" mat-raised-button>Logout</button>-->
+
+  </mat-toolbar>
+</p>
+<router-outlet></router-outlet>
